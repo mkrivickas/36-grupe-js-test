@@ -1,13 +1,14 @@
 // 2
 const text = {
-    first: (word) => word[0];
-    middle: (word) => (word.length / 2) + 1;
+    first: (s) => s[0],
+    middle: (s) => s[Math.floor(s.length - 1) / 2],
+    last: (s) => s[s.length - 1],
 };
 
-const textAction = 'first'; // first | middle | last
+const position = 'middle'; // first | middle | last
 
-const word = 'Labas';
+const word = 'abcde';
 
-const letter = 'x';
+const letter = text[position](word);
 
-console.log(`${textAction} letter of word "${word}" is ${letter}`);
+console.log(`${position} letter of word "${word}" is ${letter}`);
