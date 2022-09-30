@@ -7,26 +7,40 @@ const people = [
     { name: 'Petras', color: 'orange' },
 ];
 
-const colors = [];
-
-// numeris 1 pasirinkimas:
-
-// for (let i = 0; i < people.length; i++) {
-//     const person = people[i];
-//     const { color } = person;
-//     colors.push(color);
-// }
-
+// atsirenkame kokių spalvų ir kokiais kiekiais yra masyve
+const colorsCount = {};
+// for-of skirtas masyvui
 for (const person of people) {
     const { color } = person;
-    colors.push(color);
+    colorsCount[color] = colorsCount[color] ? colorsCount[color] + 1 : 1;
 }
 
-// daugiausiai resursų naudojantis ciklas:
+/* const colorNames = Object.keys(colorsCount);
 
-// people.forEach((person) => {
-//     const { color } = person;
-//     colors.push(color);
-// });
+// for-in skirtas objektui
+for (const color in colorsCount) {
+    colorNames.push(color);
+}
 
-console.log(colors);
+console.log(colorsCount);
+console.log(colorNames); */
+
+// randame dažniausiai paminėtos spalvos kiekį (spalvos pavadinimas nėra aktualus)
+let mostPopularColorCount = 0;
+for (const color in colorsCount) {
+    const count = colorsCount[color];
+    if (count > mostPopularColorCount) {
+        mostPopularColorCount = count;
+    }
+}
+
+// randame visus spalvų pavadinimus, kurie atitinka didžiausią paminėjimų kiekį
+let mostPopularColorNames = [];
+for (const color in colorsCount) {
+    const count = colorsCount[color];
+    if (count === mostPopularColorCount) {
+        mostPopularColorNames.push(color);
+    }
+}
+
+console.log(mostPopularColorNames);
