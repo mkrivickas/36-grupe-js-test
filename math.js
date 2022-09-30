@@ -10,3 +10,5 @@ const n1 = 7;
 const n2 = 5;
 
 const ans = 0; // 1.4
+
+console.log(ans);
